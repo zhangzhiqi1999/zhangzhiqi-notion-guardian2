@@ -25,7 +25,6 @@ jobs:
           NOTION_SPACE_ID: ${{ secrets.NOTION_SPACE_ID }}
           NOTION_USER_ID: ${{ secrets.NOTION_USER_ID }}
           
-
       - name: Checkout backup repo
         uses: actions/checkout@v2
         with:
