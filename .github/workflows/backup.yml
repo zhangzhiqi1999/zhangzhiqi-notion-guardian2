@@ -41,6 +41,7 @@ jobs:
           cd backup-repo
           git config --local user.email "${REPO_EMAIL}"
           git config --local user.name "${REPO_USERNAME}"
+          git config --global http.version HTTP/1.1
           git add .
           if [ -z "$(git status --porcelain)" ]; then
             exit 0
