@@ -43,6 +43,8 @@ jobs:
           git config --local user.name "${REPO_USERNAME}"
           git config --global http.version HTTP/1.1
           git add .
+          git commit -m "Automated Notion workspace backup"
+          git push
           if [ -z "$(git status --porcelain)" ]; then
             exit 0
           fi
