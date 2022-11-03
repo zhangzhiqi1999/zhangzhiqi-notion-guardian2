@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    -   cron: "0 16 20 * *"
+    -   cron: "0 0 * * *"
 
 jobs:
   backup:
@@ -24,7 +24,7 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_SPACE_ID: ${{ secrets.NOTION_SPACE_ID }}
           NOTION_USER_ID: ${{ secrets.NOTION_USER_ID }}
-          
+
       - name: Checkout backup repo
         uses: actions/checkout@v2
         with:
@@ -41,11 +41,7 @@ jobs:
           cd backup-repo
           git config --local user.email "${REPO_EMAIL}"
           git config --local user.name "${REPO_USERNAME}"
-          git config --global http.version HTTP/1.1
-          git config http.postBuffer 53687091200
           git add .
-          git commit -m "Automated Notion workspace backup"
-          git push
           if [ -z "$(git status --porcelain)" ]; then
             exit 0
           fi
